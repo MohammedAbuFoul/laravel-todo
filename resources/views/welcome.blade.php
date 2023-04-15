@@ -16,28 +16,25 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                    @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div style="color:#fff">
-                <h1 >to do list</h1>
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                </ul>
-                <button>add new</button>
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white" style="color: white">
+            <div>
+                <h1>to do list</h1>
+                    <ul>
+                    @foreach ($listItems as $listItem)
+                        <li>Item: {{$listItem->name}} 
+                            <form style="display: inline" action="{{route('markComplete', $listItem->id)}}" method="post">
+                            {{ csrf_field() }}
+                            <button type="submit">✅</button>
+                        </form>
+                        </li>
+                    @endforeach
+                    </ul>
+                <form method="POST" action="{{route('saveItem')}}" style="display: flex; flex-direction: column">
+                    {{ csrf_field() }}
+                    <label for="listItem">New Todo Item</label>
+                    <input style="color: black" type="text" name="listItem" id="">
+                    <button type="submit">Save Item</button>
+                </form>
             </div>
         </div>
     </body>

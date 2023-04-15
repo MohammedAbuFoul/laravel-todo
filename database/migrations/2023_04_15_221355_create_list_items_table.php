@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('list_items', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('is_complete');
             $table->timestamps();
         });
     }
