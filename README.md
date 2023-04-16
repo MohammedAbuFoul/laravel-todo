@@ -2,4 +2,4 @@
 
 ## Laravel simple Todo App
 
-Laravel simple Todo App Fllowing Matt Socha Youtube Video Titled "Understand Laravel basics 2023 | Laravel tutorial | Laravel for beginners" (https://www.youtube.com/watch?v=AEVhR-hD2Wk)
+Laravel simple Todo App Following Matt Socha Youtube Video Titled "Understand Laravel basics 2023 | Laravel tutorial | Laravel for beginners" (https://www.youtube.com/watch?v=AEVhR-hD2Wk)
